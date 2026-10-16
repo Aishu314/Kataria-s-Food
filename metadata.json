@@ -1,0 +1,6 @@
+{
+  "name": "Kataria Foods | Pure Fruit Bars, Aam Papad & Confectionery",
+  "description": "Experience authentic Indian fruit bars, tangy Imli candies, Kaccha Mango burfi, and traditional Aam Papad crafted with real fruit pulp by Kataria Foods.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
