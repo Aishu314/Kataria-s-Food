@@ -5,8 +5,6 @@ import {
   MapPin, 
   ShieldCheck, 
   Award, 
-  Heart, 
-  Send, 
   CheckCircle, 
   Sparkles 
 } from 'lucide-react';
@@ -34,7 +32,7 @@ export const Footer: React.FC<{ onOpenWholesale: () => void }> = ({ onOpenWholes
               Get 10% Off Your First Order
             </h3>
             <p className="text-xs text-stone-400">
-              Receive seasonal harvest alerts for fresh Alphonso batches and Jagdamb candy arrivals. Use code: <strong className="text-amber-300">KATARIA10</strong>
+              Receive seasonal harvest alerts for fresh Alphonso batches and tamarind candy arrivals. Use code: <strong className="text-amber-300">KATARIA10</strong>
             </p>
           </div>
 
@@ -76,7 +74,7 @@ export const Footer: React.FC<{ onOpenWholesale: () => void }> = ({ onOpenWholes
                 <span className="font-display font-extrabold text-xl text-white">
                   Kataria<span className="text-amber-500">Foods</span>
                 </span>
-                <p className="text-[10px] text-amber-400 font-medium">Kataria Grah Udyog & Jagdamb Specialities</p>
+                <p className="text-[10px] text-amber-400 font-medium">Kataria Grah Udyog & Confectionery Innovators</p>
               </div>
             </div>
 
@@ -151,13 +149,13 @@ export const Footer: React.FC<{ onOpenWholesale: () => void }> = ({ onOpenWholes
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
                 <span>
-                  <strong>Kolhapur Hub (Jagdamb Unit):</strong> Near Mirajkar Tikti, Kolhapur, Maharashtra - 416012
+                  <strong>Manufacturing Unit:</strong> Near Mirajkar Tikti, Kolhapur, Maharashtra - 416012
                 </span>
               </div>
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
                 <span>
-                  <strong>Alwar Unit (Kataria Foods):</strong> Industrial Confectionery Area, Alwar, Rajasthan - 301001
+                  <strong>Kataria Grah Udyog Hub:</strong> Confectionery Processing Zone, Alwar, Rajasthan - 301001
                 </span>
               </div>
               <div className="flex items-center gap-2 pt-1 text-stone-300">
@@ -176,7 +174,7 @@ export const Footer: React.FC<{ onOpenWholesale: () => void }> = ({ onOpenWholes
         {/* Bottom Copyright & Badges */}
         <div className="pt-8 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500">
           <div>
-            © {new Date().getFullYear()} Kataria Foods & Jagdamb Confectionery Specialities. All rights reserved.
+            © {new Date().getFullYear()} Kataria Foods & Kataria Grah Udyog. All rights reserved.
           </div>
           <div className="flex items-center gap-4 text-[11px]">
             <span>100% Vegetarian (Green Dot)</span>

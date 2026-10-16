@@ -6,8 +6,7 @@ import {
   X, 
   Sparkles, 
   Briefcase,
-  PhoneCall,
-  Heart
+  PhoneCall
 } from 'lucide-react';
 import { Product } from '../types';
 
@@ -38,7 +37,8 @@ export const Navbar: React.FC<NavbarProps> = ({
     ? products.filter(p => 
         p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
         p.flavor.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.category.toLowerCase().includes(searchQuery.toLowerCase())
+        p.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        p.ingredients.some(ing => ing.toLowerCase().includes(searchQuery.toLowerCase()))
       ).slice(0, 5)
     : [];
 
@@ -65,7 +65,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <p className="text-[11px] text-amber-800/80 font-medium tracking-wide flex items-center gap-1">
                   <span>Pure Fruit Confectionery</span>
                   <span className="text-amber-400">•</span>
-                  <span className="text-amber-700 font-semibold">Jagdamb Specialities</span>
+                  <span className="text-amber-700 font-semibold">Kataria Grah Udyog</span>
                 </p>
               </div>
             </a>
@@ -76,7 +76,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className="relative">
               <input
                 type="text"
-                placeholder="Search Imli Candy, Aam Papad, Fruit Burfi..."
+                placeholder="Search by product name, ingredient, flavor..."
                 value={searchQuery}
                 onChange={(e) => onSearchChange(e.target.value)}
                 onFocus={() => setSearchFocused(true)}
@@ -98,7 +98,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {searchFocused && filteredSuggestions.length > 0 && (
               <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-xl border border-amber-100 py-2 z-50 overflow-hidden">
                 <div className="px-3 py-1.5 text-[11px] font-semibold text-stone-400 uppercase tracking-wider">
-                  Matching Products ({filteredSuggestions.length})
+                  Matching Delicacies ({filteredSuggestions.length})
                 </div>
                 {filteredSuggestions.map((product) => (
                   <button

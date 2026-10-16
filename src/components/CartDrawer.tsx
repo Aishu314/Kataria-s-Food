@@ -54,10 +54,11 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   const handleApplyCoupon = (e: React.FormEvent) => {
     e.preventDefault();
     setCouponError('');
-    if (coupon.trim().toUpperCase() === 'KATARIA10') {
+    const code = coupon.trim().toUpperCase();
+    if (code === 'KATARIA10') {
       const disc = Math.round(subtotal * 0.1);
       setAppliedDiscount(disc);
-    } else if (coupon.trim().toUpperCase() === 'JAGDAMB5') {
+    } else if (code === 'KATARIA50') {
       setAppliedDiscount(50);
     } else {
       setCouponError('Invalid coupon. Try "KATARIA10" for 10% off');
@@ -68,7 +69,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
     let orderText = `*Kataria Foods - Customer Order Inquiry*\n`;
     orderText += `---------------------------------------\n`;
     cart.forEach((item, idx) => {
-      orderText += `${idx + 1}. *${item.name}*\n   Pack: ${item.selectedPack.weight} | Qty: ${item.quantity} | Total: ₹${item.totalPrice}\n`;
+      orderText += `${idx + 1}. *${item.name}*\n   Pack: ${item.selectedPack.weight} (${item.selectedPack.packageType}) | Qty: ${item.quantity} | Total: ₹${item.totalPrice}\n`;
     });
     orderText += `---------------------------------------\n`;
     orderText += `Subtotal: ₹${subtotal}\n`;
@@ -160,7 +161,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 Order Received!
               </h3>
               <p className="text-xs text-stone-600 leading-relaxed">
-                Thank you, <strong>{customerName || 'Valued Customer'}</strong>! Your order reference is <strong>#KF-{Math.floor(100000 + Math.random() * 900000)}</strong>. Our team in Kolhapur will prepare your fresh batch for dispatch.
+                Thank you, <strong>{customerName || 'Valued Customer'}</strong>! Your Kataria Foods order reference is <strong>#KF-{Math.floor(100000 + Math.random() * 900000)}</strong>. Our confectionery desk will prepare your fresh batch for dispatch.
               </p>
               <button
                 onClick={() => {

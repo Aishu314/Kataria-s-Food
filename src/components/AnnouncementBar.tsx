@@ -10,7 +10,7 @@ export const AnnouncementBar: React.FC<{ onOpenWholesale: () => void }> = ({ onO
             <Sparkles className="w-3 h-3 text-amber-400" /> Factory Fresh
           </span>
           <span className="font-medium">
-            Direct from Kataria Foods & Jagdamb Confectionery Hub • Free Delivery on orders over ₹499
+            Direct from Kataria Foods Confectionery Kitchens • Free Delivery on orders over ₹499
           </span>
         </div>
 

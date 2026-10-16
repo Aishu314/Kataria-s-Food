@@ -7,8 +7,6 @@ import {
   Truck, 
   ShieldCheck, 
   Send, 
-  Package, 
-  Percent,
   FileSpreadsheet
 } from 'lucide-react';
 import { Product } from '../types';
@@ -75,7 +73,7 @@ Please send official B2B wholesale rate card & dispatch catalogue.`;
             Direct Factory Wholesale & Super Stockist Network
           </h2>
           <p className="text-sm sm:text-base text-stone-400 leading-relaxed">
-            Supply high-margin, fast-moving fruit bars, imli candies, and traditional aam papad to your retail stores, supermarkets, and sweet counters across India.
+            Supply high-margin, fast-moving fruit bars, imli candies, and traditional aam papad to your retail stores, supermarkets, and sweet counters across India directly from Kataria Foods.
           </p>
         </div>
 
@@ -187,7 +185,7 @@ Please send official B2B wholesale rate card & dispatch catalogue.`;
           <div className="lg:col-span-6 bg-stone-800/80 rounded-3xl p-6 sm:p-8 border border-stone-700/80 shadow-xl">
             
             <div className="border-b border-stone-700 pb-4 mb-6">
-              <h3 className="font-bold text-lg text-white">Apply for Dealership & Distributorship</h3>
+              <h3 className="font-bold text-lg text-white">Apply for Kataria Dealership & Distributorship</h3>
               <p className="text-xs text-stone-400">
                 Join our network of 350+ distributors across Maharashtra, Gujarat, Rajasthan & beyond.
               </p>

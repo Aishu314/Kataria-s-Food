@@ -12,7 +12,7 @@ import { CustomerReviews } from './components/CustomerReviews';
 import { CartDrawer } from './components/CartDrawer';
 import { WholesaleModal } from './components/WholesaleModal';
 import { Footer } from './components/Footer';
-import { PRODUCTS, CATEGORIES, CERTIFICATIONS } from './data/products';
+import { PRODUCTS } from './data/products';
 import { Product, ProductCategory, ProductPackOption, CartItem } from './types';
 import { 
   Sparkles, 
@@ -45,12 +45,18 @@ export default function App() {
     }
   }, [cart]);
 
-  // UI state
+  // Robust Search & Filter state
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<ProductCategory>('all');
   const [selectedFlavor, setSelectedFlavor] = useState('All Flavors');
-  const [onlyJagdamb, setOnlyJagdamb] = useState(false);
+  const [selectedPackageType, setSelectedPackageType] = useState('All Packaging');
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000]);
+  const [onlySugarFree, setOnlySugarFree] = useState(false);
+  const [onlyBestsellers, setOnlyBestsellers] = useState(false);
   const [sortBy, setSortBy] = useState('popular');
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+
+  // Modal & Drawer state
   const [selectedProductForModal, setSelectedProductForModal] = useState<Product | null>(null);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isWholesaleOpen, setIsWholesaleOpen] = useState(false);
@@ -137,15 +143,28 @@ export default function App() {
       if (selectedCategory !== 'all' && item.category !== selectedCategory) {
         return false;
       }
-      // Jagdamb filter
-      if (onlyJagdamb && !item.isJagdambSpecial) {
-        return false;
-      }
       // Flavor filter
       if (selectedFlavor !== 'All Flavors' && item.flavor !== selectedFlavor) {
         return false;
       }
-      // Search query
+      // Package Type filter
+      if (selectedPackageType !== 'All Packaging' && !item.packageTypes.includes(selectedPackageType as any)) {
+        return false;
+      }
+      // Price range filter (checking lowest pack price)
+      const lowestPrice = item.packOptions[0]?.price || 0;
+      if (lowestPrice > priceRange[1]) {
+        return false;
+      }
+      // Sugar Free filter
+      if (onlySugarFree && item.badge !== 'Zero Added Sugar') {
+        return false;
+      }
+      // Bestseller filter
+      if (onlyBestsellers && !item.isBestseller) {
+        return false;
+      }
+      // Multi-attribute search query
       if (searchQuery.trim()) {
         const q = searchQuery.toLowerCase();
         const matchesName = item.name.toLowerCase().includes(q);
@@ -153,7 +172,8 @@ export default function App() {
         const matchesHindi = item.hindiName?.toLowerCase().includes(q) || false;
         const matchesFlavor = item.flavor.toLowerCase().includes(q);
         const matchesCategory = item.category.toLowerCase().includes(q);
-        return matchesName || matchesDesc || matchesHindi || matchesFlavor || matchesCategory;
+        const matchesIngredient = item.ingredients.some(ing => ing.toLowerCase().includes(q));
+        return matchesName || matchesDesc || matchesHindi || matchesFlavor || matchesCategory || matchesIngredient;
       }
       return true;
     }).sort((a, b) => {
@@ -166,10 +186,22 @@ export default function App() {
       if (sortBy === 'rating') {
         return b.rating - a.rating;
       }
-      // Default: bestsellers & Jagdamb specials first
+      if (sortBy === 'pulp-desc') {
+        return b.fruitPulpPercentage - a.fruitPulpPercentage;
+      }
+      // Default: bestsellers first
       return (b.isBestseller ? 1 : 0) - (a.isBestseller ? 1 : 0);
     });
-  }, [selectedCategory, onlyJagdamb, selectedFlavor, searchQuery, sortBy]);
+  }, [
+    selectedCategory, 
+    selectedFlavor, 
+    selectedPackageType, 
+    priceRange, 
+    onlySugarFree, 
+    onlyBestsellers, 
+    searchQuery, 
+    sortBy
+  ]);
 
   const scrollToCatalog = () => {
     document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
@@ -252,7 +284,7 @@ export default function App() {
               </div>
               <div>
                 <h4 className="text-xs font-bold text-stone-900">Direct Factory Dispatch</h4>
-                <p className="text-[11px] text-stone-500">Kolhapur & Alwar Hubs</p>
+                <p className="text-[11px] text-stone-500">Kolhapur & Alwar Kitchens</p>
               </div>
             </div>
           </div>
@@ -266,13 +298,13 @@ export default function App() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-amber-200/80 pb-6">
           <div className="space-y-1">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold uppercase tracking-wider">
-              <Flame className="w-3.5 h-3.5 text-orange-600" /> Integrated Product Line
+              <Flame className="w-3.5 h-3.5 text-orange-600" /> Kataria Foods Catalog
             </div>
             <h2 className="font-display font-black text-3xl sm:text-4xl text-stone-900">
-              Fresh Batches & Artisanal Catalog
+              Fresh Batches & Artisanal Confectionery
             </h2>
             <p className="text-sm text-stone-600 max-w-2xl">
-              Discover authentic Imli Fruit Bars, Kaccha Mango Burfi, Dobull Imli Candy Jars, and Royal Alphonso Aam Papad crafted with 100% natural fruit pulp.
+              Explore authentic Imli Fruit Bars, Kaccha Mango Burfi, Dobull Imli Candy Jars, and Royal Alphonso Aam Papad crafted with 100% natural fruit pulp.
             </p>
           </div>
 
@@ -283,38 +315,61 @@ export default function App() {
           </div>
         </div>
 
-        {/* Category & Filters */}
+        {/* Robust Category & Attribute Filter Controls */}
         <CategoryFilter
           selectedCategory={selectedCategory}
           onSelectCategory={setSelectedCategory}
           selectedFlavor={selectedFlavor}
           onSelectFlavor={setSelectedFlavor}
-          onlyJagdamb={onlyJagdamb}
-          onToggleJagdamb={setOnlyJagdamb}
+          selectedPackageType={selectedPackageType}
+          onSelectPackageType={setSelectedPackageType}
+          priceRange={priceRange}
+          onPriceRangeChange={setPriceRange}
+          onlySugarFree={onlySugarFree}
+          onToggleSugarFree={setOnlySugarFree}
+          onlyBestsellers={onlyBestsellers}
+          onToggleBestsellers={setOnlyBestsellers}
           sortBy={sortBy}
           onSortChange={setSortBy}
+          viewMode={viewMode}
+          onToggleViewMode={setViewMode}
           totalCount={filteredProducts.length}
         />
 
-        {/* Product Cards Grid */}
+        {/* Product Display: Grid or List */}
         {filteredProducts.length === 0 ? (
           <div className="bg-white rounded-3xl p-12 text-center border border-amber-200 space-y-3">
             <div className="text-4xl">🔍</div>
-            <h3 className="font-display font-bold text-xl text-stone-900">No products found</h3>
+            <h3 className="font-display font-bold text-xl text-stone-900">No products match your criteria</h3>
             <p className="text-xs text-stone-500 max-w-sm mx-auto">
-              We couldn't find any treats matching your current filter. Try resetting your search or flavor filters.
+              We couldn't find any treats matching your current search or filters. Try adjusting your price range or clearing filters.
             </p>
             <button
               onClick={() => {
                 setSelectedCategory('all');
                 setSelectedFlavor('All Flavors');
-                setOnlyJagdamb(false);
+                setSelectedPackageType('All Packaging');
+                setPriceRange([0, 1000]);
+                setOnlySugarFree(false);
+                setOnlyBestsellers(false);
                 setSearchQuery('');
               }}
               className="px-5 py-2.5 rounded-xl bg-amber-600 text-white font-bold text-xs"
             >
               Reset All Filters
             </button>
+          </div>
+        ) : viewMode === 'list' ? (
+          <div className="space-y-4">
+            {filteredProducts.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                onAddToCart={handleAddToCart}
+                onOpenQuickView={(p) => setSelectedProductForModal(p)}
+                viewMode="list"
+              />
+            ))}
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -324,6 +379,7 @@ export default function App() {
                 product={product}
                 onAddToCart={handleAddToCart}
                 onOpenQuickView={(p) => setSelectedProductForModal(p)}
+                viewMode="grid"
               />
             ))}
           </div>
@@ -376,7 +432,7 @@ export default function App() {
 
       {/* Floating WhatsApp Action Button */}
       <a
-        href="https://wa.me/919822054321?text=Hi%20Kataria%20Foods%20Team!%20I%20want%20to%20inquire%20about%20your%20products%20and%20fresh%20fruit%20bars."
+        href="https://wa.me/919822054321?text=Hi%20Kataria%20Foods%20Team!%20I%20want%20to%20inquire%20about%20your%20fresh%20fruit%20bars%20and%20candies."
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-40 bg-emerald-600 hover:bg-emerald-700 text-white p-3.5 rounded-full shadow-2xl flex items-center gap-2 group transition-all hover:scale-105 active:scale-95"

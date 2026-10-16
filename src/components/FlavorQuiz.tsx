@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, ArrowRight, RotateCcw, ShoppingBag, Check } from 'lucide-react';
+import { Sparkles, RotateCcw, ShoppingBag, Check } from 'lucide-react';
 import { Product, ProductPackOption } from '../types';
 
 interface FlavorQuizProps {
@@ -20,7 +20,7 @@ export const FlavorQuiz: React.FC<FlavorQuizProps> = ({
   const [added, setAdded] = useState(false);
 
   const CRAVINGS = [
-    { id: 'imli', label: 'Tangy Khatta-Meetha Tamarind', icon: '🌿', desc: 'Real tamarind pulp with cumin & black salt' },
+    { id: 'imli', label: 'Tangy Khatta-Meetha Tamarind', icon: '🌿', desc: 'Real tamarind pulp with roasted cumin & rock salt' },
     { id: 'mango', label: 'Luscious Ripe Alphonso Mango', icon: '🥭', desc: 'Sweet, sunny Ratnagiri mango richness' },
     { id: 'kairi', label: 'Tart Green Raw Mango & Mint', icon: '🍃', desc: 'Chatpata kairi slices with cooling pudina' },
     { id: 'spicy', label: 'Spicy Masala Kala Aam Papad', icon: '🌶️', desc: 'Hing, ginger & roasted jeera digestive kick' },
@@ -83,7 +83,7 @@ export const FlavorQuiz: React.FC<FlavorQuizProps> = ({
             Find Your Signature Cravings Match
           </h2>
           <p className="text-sm text-stone-600 max-w-xl mx-auto">
-            Not sure what to try first? Answer 2 quick questions to discover your personalized Kataria & Jagdamb delicacy.
+            Not sure what to try first? Answer 2 quick questions to discover your personalized Kataria Foods delicacy.
           </p>
         </div>
 
@@ -239,7 +239,7 @@ export const FlavorQuiz: React.FC<FlavorQuizProps> = ({
                     onClick={() => onSelectProduct(recommendedProduct)}
                     className="px-4 py-2.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 font-bold text-xs cursor-pointer transition-colors"
                   >
-                    View All Pack Sizes
+                    View Details
                   </button>
                 </div>
               </div>

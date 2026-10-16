@@ -5,22 +5,31 @@ export type ProductCategory =
   | 'candies'
   | 'aam-papad'
   | 'katli'
-  | 'jars-bulk';
+  | 'festive-gift-boxes';
 
 export type FlavorProfile = 
-  | 'Khatta-Meetha (Tangy & Sweet)'
-  | 'Ripe Alphonso Mango'
-  | 'Spicy Chatpata Masala'
+  | 'All Flavors'
   | 'Tangy Tamarind / Imli'
+  | 'Ripe Alphonso Mango'
   | 'Cool Pudina & Kairi'
-  | 'Natural Jamun & Amla';
+  | 'Spicy Chatpata Masala'
+  | 'Natural Jamun & Amla'
+  | 'Assorted Fruit Delights';
+
+export type PackageType = 'Pouch' | 'PET Jar' | 'Gift Box' | 'Carton Box';
 
 export interface ProductPackOption {
   weight: string;
   price: number;
   originalPrice: number;
   inStock: boolean;
-  packageType: 'Pouch' | 'PET Jar' | 'Gift Box' | 'Carton Box';
+  packageType: PackageType;
+}
+
+export interface SensoryProfile {
+  tanginess: number; // 1 to 5
+  sweetness: number; // 1 to 5
+  spiciness: number; // 1 to 5
 }
 
 export interface Product {
@@ -30,19 +39,22 @@ export interface Product {
   tagline: string;
   category: ProductCategory;
   flavor: FlavorProfile;
+  packageTypes: PackageType[];
   description: string;
   longDescription: string;
   image: string;
   additionalImages?: string[];
   packOptions: ProductPackOption[];
-  selectedPackIndex?: number;
   rating: number;
   reviewCount: number;
   isBestseller?: boolean;
   isNewLaunch?: boolean;
-  isJagdambSpecial?: boolean;
+  isSpecialSignature?: boolean;
   badge?: string;
   ingredients: string[];
+  fruitPulpPercentage: number;
+  sensoryProfile: SensoryProfile;
+  bestMoments: string[];
   nutrition: {
     energy: string;
     carbohydrates: string;
@@ -63,17 +75,4 @@ export interface CartItem {
   selectedPack: ProductPackOption;
   quantity: number;
   totalPrice: number;
-}
-
-export interface WholesaleInquiry {
-  businessName: string;
-  contactPerson: string;
-  phone: string;
-  email: string;
-  city: string;
-  state: string;
-  inquiryType: 'distributor' | 'retailer' | 'bulk-event' | 'export';
-  targetProducts: string[];
-  estimatedMonthlyVolume: string;
-  notes: string;
 }

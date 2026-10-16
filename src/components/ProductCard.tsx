@@ -4,10 +4,11 @@ import {
   ShoppingBag, 
   Eye, 
   Phone, 
-  Sparkles, 
   Check, 
   Plus, 
-  Minus 
+  Minus,
+  Leaf,
+  Sparkles
 } from 'lucide-react';
 import { Product, ProductPackOption } from '../types';
 
@@ -15,12 +16,14 @@ interface ProductCardProps {
   product: Product;
   onAddToCart: (product: Product, pack: ProductPackOption, qty: number) => void;
   onOpenQuickView: (product: Product) => void;
+  viewMode?: 'grid' | 'list';
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
   product,
   onAddToCart,
-  onOpenQuickView
+  onOpenQuickView,
+  viewMode = 'grid'
 }) => {
   const [selectedPackIndex, setSelectedPackIndex] = useState(0);
   const [qty, setQty] = useState(1);
@@ -46,11 +49,157 @@ Please confirm payment and delivery details.`;
     return `https://wa.me/919822054321?text=${encodeURIComponent(text)}`;
   };
 
+  // List View Rendering
+  if (viewMode === 'list') {
+    return (
+      <div className="group bg-white rounded-3xl border border-amber-200/80 hover:border-amber-400 overflow-hidden shadow-xs hover:shadow-xl transition-all p-4 sm:p-6 flex flex-col md:flex-row gap-6 items-center">
+        
+        {/* Media */}
+        <div 
+          className="relative w-full md:w-60 h-48 rounded-2xl overflow-hidden bg-amber-50 cursor-pointer shrink-0"
+          onClick={() => onOpenQuickView(product)}
+        >
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          {product.badge && (
+            <span className="absolute top-2 left-2 px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase bg-amber-600 text-white shadow-xs">
+              {product.badge}
+            </span>
+          )}
+          <div className="absolute top-2 right-2 bg-white/90 p-1 rounded-md shadow-xs">
+            <div className="w-3.5 h-3.5 border-2 border-emerald-600 flex items-center justify-center">
+              <div className="w-1.5 h-1.5 bg-emerald-600 rounded-full" />
+            </div>
+          </div>
+        </div>
+
+        {/* Info */}
+        <div className="flex-1 space-y-2 text-left w-full">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-bold text-amber-800 uppercase tracking-wider">{product.flavor}</span>
+              <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[10px] font-bold border border-emerald-200 flex items-center gap-1">
+                <Leaf className="w-3 h-3 text-emerald-600" /> {product.fruitPulpPercentage}% Real Pulp
+              </span>
+            </div>
+            <div className="flex items-center gap-1 bg-amber-50 px-2 py-0.5 rounded-md text-xs font-bold text-stone-700">
+              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+              <span>{product.rating}</span>
+              <span className="text-stone-400 font-normal">({product.reviewCount})</span>
+            </div>
+          </div>
+
+          <h3 
+            onClick={() => onOpenQuickView(product)}
+            className="font-display font-extrabold text-xl text-stone-900 group-hover:text-amber-700 cursor-pointer"
+          >
+            {product.name}
+          </h3>
+
+          {product.hindiName && (
+            <p className="text-xs text-amber-900/70 font-semibold">{product.hindiName}</p>
+          )}
+
+          <p className="text-xs text-stone-600 line-clamp-2 leading-relaxed">
+            {product.longDescription}
+          </p>
+
+          {/* Sensory meter bars */}
+          <div className="flex items-center gap-4 text-[11px] text-stone-500 pt-1">
+            <span className="flex items-center gap-1">
+              Tanginess: <strong>{'🍋'.repeat(product.sensoryProfile.tanginess)}</strong>
+            </span>
+            <span className="flex items-center gap-1">
+              Sweetness: <strong>{'🍯'.repeat(product.sensoryProfile.sweetness)}</strong>
+            </span>
+          </div>
+
+          {/* Pack Options */}
+          <div className="flex flex-wrap gap-1.5 pt-2">
+            {product.packOptions.map((pack, idx) => (
+              <button
+                key={pack.weight}
+                onClick={() => setSelectedPackIndex(idx)}
+                className={`px-3 py-1 rounded-xl text-xs font-semibold border transition-all cursor-pointer ${
+                  selectedPackIndex === idx
+                    ? 'bg-amber-600 text-white border-amber-600'
+                    : 'bg-stone-50 text-stone-700 hover:border-amber-300'
+                }`}
+              >
+                {pack.weight} - ₹{pack.price}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Buy Actions */}
+        <div className="w-full md:w-48 shrink-0 flex flex-col justify-between border-t md:border-t-0 md:border-l border-amber-100 pt-4 md:pt-0 md:pl-6 space-y-3">
+          <div>
+            <div className="text-2xl font-black text-stone-900">
+              ₹{currentPack.price * qty}
+            </div>
+            {currentPack.originalPrice > currentPack.price && (
+              <div className="text-xs text-stone-400 line-through">
+                ₹{currentPack.originalPrice * qty} ({discountPercent}% off)
+              </div>
+            )}
+          </div>
+
+          <div className="flex items-center border border-amber-200 rounded-xl bg-amber-50/50 p-0.5 w-max">
+            <button
+              onClick={() => setQty(Math.max(1, qty - 1))}
+              className="w-6 h-6 flex items-center justify-center rounded-lg hover:bg-white text-stone-600"
+            >
+              <Minus className="w-3 h-3" />
+            </button>
+            <span className="w-7 text-center text-xs font-bold text-stone-900">{qty}</span>
+            <button
+              onClick={() => setQty(qty + 1)}
+              className="w-6 h-6 flex items-center justify-center rounded-lg hover:bg-white text-stone-600"
+            >
+              <Plus className="w-3 h-3" />
+            </button>
+          </div>
+
+          <div className="space-y-2 w-full">
+            <button
+              onClick={handleAdd}
+              className={`w-full py-2.5 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-xs cursor-pointer ${
+                addedEffect ? 'bg-emerald-600 text-white' : 'bg-amber-600 hover:bg-amber-700 text-white'
+              }`}
+            >
+              {addedEffect ? <Check className="w-3.5 h-3.5" /> : <ShoppingBag className="w-3.5 h-3.5" />}
+              <span>{addedEffect ? 'Added!' : 'Add to Cart'}</span>
+            </button>
+
+            <a
+              href={generateWhatsAppUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold text-xs flex items-center justify-center gap-1"
+            >
+              <Phone className="w-3.5 h-3.5 text-emerald-600" />
+              <span>WhatsApp Order</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    );
+  }
+
+  // Standard Grid View Rendering
   return (
     <div className="group bg-white rounded-3xl border border-amber-200/80 hover:border-amber-400 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative">
       
       {/* Top Media Container */}
-      <div className="relative aspect-[4/3] bg-amber-50/60 overflow-hidden cursor-pointer" onClick={() => onOpenQuickView(product)}>
+      <div 
+        className="relative aspect-[4/3] bg-amber-50/60 overflow-hidden cursor-pointer" 
+        onClick={() => onOpenQuickView(product)}
+      >
         <img
           src={product.image}
           alt={product.name}
@@ -61,13 +210,7 @@ Please confirm payment and delivery details.`;
         {/* Top Badges Overlay */}
         <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
           {product.badge && (
-            <span className={`px-2.5 py-1 rounded-full text-[10px] font-extrabold tracking-wide uppercase shadow-sm ${
-              product.badge.includes('Jagdamb')
-                ? 'bg-orange-600 text-white'
-                : product.badge.includes('Heritage')
-                ? 'bg-amber-800 text-amber-100'
-                : 'bg-emerald-700 text-white'
-            }`}>
+            <span className="px-2.5 py-1 rounded-full text-[10px] font-extrabold tracking-wide uppercase bg-amber-600 text-white shadow-sm">
               {product.badge}
             </span>
           )}
@@ -83,6 +226,12 @@ Please confirm payment and delivery details.`;
           <div className="w-3.5 h-3.5 border-2 border-emerald-600 flex items-center justify-center rounded-xs">
             <div className="w-1.5 h-1.5 bg-emerald-600 rounded-full" />
           </div>
+        </div>
+
+        {/* Pulp Percentage Chip */}
+        <div className="absolute bottom-3 left-3 bg-white/95 backdrop-blur-sm px-2 py-0.5 rounded-md text-[10px] font-bold text-stone-800 border border-amber-200 flex items-center gap-1 shadow-xs">
+          <Leaf className="w-3 h-3 text-emerald-600" />
+          <span>{product.fruitPulpPercentage}% Pulp</span>
         </div>
 
         {/* Hover Quick View Trigger */}
@@ -121,7 +270,7 @@ Please confirm payment and delivery details.`;
             </p>
           )}
 
-          {/* Short tagline description */}
+          {/* Short description */}
           <p className="text-xs text-stone-500 line-clamp-2 leading-relaxed mb-3">
             {product.description}
           </p>

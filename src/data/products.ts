@@ -1,5 +1,23 @@
 import { Product } from '../types';
 
+import imliFruitBarImg from '../assets/images/imli_fruit_bar_1792175041148.jpg';
+import kacchaMangoBarImg from '../assets/images/kaccha_mango_bar_1792175061984.jpg';
+import mangoBurfiImg from '../assets/images/mango_burfi_1792175061717.jpg';
+import imliBurfiImg from '../assets/images/imli_burfi_1792175123697.jpg';
+import kacchaMangoBurfiImg from '../assets/images/kaccha_mango_burfi_1792175171767.jpg';
+import dobullImliCandyImg from '../assets/images/dobull_imli_candy_1792175041245.jpg';
+import jetImliBoomImg from '../assets/images/jet_imli_boom_1792175103700.jpg';
+import dobullKairiBoomImg from '../assets/images/dobull_kairi_boom_1792175103159.jpg';
+import aamPapadToffeeImg from '../assets/images/aam_papad_toffee_1792175061911.jpg';
+import mangoFruitCubesImg from '../assets/images/mango_fruit_cubes_1792175151767.jpg';
+import alphonsoAamPapadImg from '../assets/images/alphonso_aam_papad_1792175042852.jpg';
+import khatelaMasalaAamPapadImg from '../assets/images/khatela_masala_aam_papad_1792175083160.jpg';
+import pudinaGreenAamPapadImg from '../assets/images/pudina_green_aam_papad_1792175152163.jpg';
+import alphonsoKatliImg from '../assets/images/alphonso_katli_1792175104089.jpg';
+import amlaKatliImg from '../assets/images/amla_katli_1792175151925.jpg';
+import jamunChipsImg from '../assets/images/jamun_chips_1792175124520.jpg';
+import katariaGiftBoxImg from '../assets/images/kataria_gift_box_1792175172591.jpg';
+
 export const PRODUCTS: Product[] = [
   {
     id: 'imli-fruit-bar',
@@ -8,24 +26,28 @@ export const PRODUCTS: Product[] = [
     tagline: 'Pure Tamarind Pulp Slabs with Traditional Khatta-Meetha Zing',
     category: 'fruit-bars',
     flavor: 'Tangy Tamarind / Imli',
-    description: 'Slow-cooked pure tamarind pulp blended with mild organic jaggery and roasted cumin. Chewy, mouth-watering, and 100% natural.',
-    longDescription: 'Our flagship Imli Fruit Bar is crafted in the traditional Western Indian confectionery technique perfected by Jagdamb & Kataria artisans. We extract ripe tamarind pulp, carefully filter seeds and fibers, and infuse it with traditional spices. Free from gelatin and synthetic souring agents.',
-    image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=80',
-    additionalImages: [
-      'https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=800&q=80'
-    ],
+    packageTypes: ['Pouch', 'Carton Box'],
+    description: 'Slow-cooked pure tamarind pulp blended with mild jaggery and roasted cumin. Chewy, mouth-watering, and 100% natural.',
+    longDescription: 'Our flagship Kataria Imli Fruit Bar is prepared using a heritage confectionery craft perfected over decades. We extract ripe tamarind pulp, gently filter the fibers and seeds, and slowly concentrate it with roasted jeera and black salt. Contains zero synthetic gelatin, zero trans fat, and no artificial colorants.',
+    image: imliFruitBarImg,
+    fruitPulpPercentage: 65,
+    sensoryProfile: {
+      tanginess: 5,
+      sweetness: 3,
+      spiciness: 2
+    },
+    bestMoments: ['Post-lunch digestive', 'Travel & road trips', 'Tangy craving cure'],
     packOptions: [
       { weight: '100g Pouch', price: 45, originalPrice: 55, inStock: true, packageType: 'Pouch' },
       { weight: '250g Zipper Pack', price: 110, originalPrice: 130, inStock: true, packageType: 'Pouch' },
-      { weight: '500g Fresh Pack', price: 210, originalPrice: 250, inStock: true, packageType: 'Pouch' },
+      { weight: '500g Value Pack', price: 210, originalPrice: 250, inStock: true, packageType: 'Pouch' },
       { weight: '1kg Bulk Wholesale', price: 390, originalPrice: 470, inStock: true, packageType: 'Carton Box' }
     ],
     rating: 4.9,
     reviewCount: 384,
     isBestseller: true,
-    isJagdambSpecial: true,
-    badge: 'Jagdamb Original',
+    isSpecialSignature: true,
+    badge: 'Kataria Classic',
     ingredients: ['Tamarind Pulp (65%)', 'Sugar', 'Liquid Glucose', 'Black Salt', 'Roasted Cumin', 'Citric Acid'],
     nutrition: {
       energy: '332 kcal / 100g',
@@ -35,7 +57,7 @@ export const PRODUCTS: Product[] = [
       protein: '2.1g',
       dietaryFiber: '4.8g'
     },
-    highlights: ['100% Real Tamarind Extract', 'Digestive Cumin Notes', 'No Artificial Colorants', 'Rich in Dietary Fiber'],
+    highlights: ['65% Real Tamarind Extract', 'Digestive Cumin Notes', 'No Artificial Colorants', 'Rich in Dietary Fiber'],
     shelfLife: '12 Months from MFD',
     storageInstructions: 'Store in a cool, dry place away from direct sunlight. Reseal pouch after opening.'
   },
@@ -46,23 +68,28 @@ export const PRODUCTS: Product[] = [
     tagline: 'Refreshing Raw Mango Bar with Zingy Chatpata Masala',
     category: 'fruit-bars',
     flavor: 'Cool Pudina & Kairi',
-    description: 'Made from sun-plucked green raw mangoes (Kairi) infused with rock salt and hand-ground black pepper for a crisp tang in every bite.',
-    longDescription: 'Capturing the irresistible nostalgia of Indian summer street kairi. Our Kaccha Mango Fruit Bar combines tart raw mango pulp with a signature blend of digestive spices. It strikes the perfect balance between spicy, sour, and mildly sweet.',
-    image: 'https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=800&q=80',
-    additionalImages: [
-      'https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?auto=format&fit=crop&w=800&q=80'
-    ],
+    packageTypes: ['Pouch', 'Carton Box'],
+    description: 'Made from hand-picked green raw mangoes (Kairi) infused with rock salt and hand-ground black pepper for an authentic street-style tang.',
+    longDescription: 'Capturing the irresistible nostalgia of Indian summer kairi slices. Kataria Kaccha Mango Fruit Bar blends tart raw mango pulp with a signature blend of Himalayan rock salt, crushed mint, and digestive herbs. Strikes the perfect harmonious chord between spicy, sour, and mildly sweet.',
+    image: kacchaMangoBarImg,
+    fruitPulpPercentage: 62,
+    sensoryProfile: {
+      tanginess: 5,
+      sweetness: 2,
+      spiciness: 3
+    },
+    bestMoments: ['Afternoon refreshment', 'Summer heat soother', 'School lunchbox snack'],
     packOptions: [
       { weight: '100g Pouch', price: 45, originalPrice: 55, inStock: true, packageType: 'Pouch' },
       { weight: '250g Zipper Pack', price: 110, originalPrice: 130, inStock: true, packageType: 'Pouch' },
-      { weight: '500g Fresh Pack', price: 210, originalPrice: 250, inStock: true, packageType: 'Pouch' },
+      { weight: '500g Value Pack', price: 210, originalPrice: 250, inStock: true, packageType: 'Pouch' },
       { weight: '1kg Bulk Wholesale', price: 390, originalPrice: 470, inStock: true, packageType: 'Carton Box' }
     ],
     rating: 4.8,
     reviewCount: 290,
     isBestseller: true,
-    isJagdambSpecial: true,
-    badge: 'Customer Favorite',
+    isSpecialSignature: true,
+    badge: 'Popular Zing',
     ingredients: ['Raw Green Mango Pulp (62%)', 'Sugar', 'Rock Salt (Sendha Namak)', 'Mint Leaves', 'Black Pepper', 'Spices'],
     nutrition: {
       energy: '320 kcal / 100g',
@@ -83,12 +110,17 @@ export const PRODUCTS: Product[] = [
     tagline: 'Royal Alphonso Mango Pulp Layered into Chewy Dessert Squares',
     category: 'burfi',
     flavor: 'Ripe Alphonso Mango',
+    packageTypes: ['Gift Box', 'Carton Box'],
     description: 'Velvety, rich Alphonso mango pulp crafted into golden burfi slabs with a chewy artisanal texture and fragrant cardamom aroma.',
-    longDescription: 'A modern dessert revolution: all the delight of traditional Indian burfi with the goodness of 100% natural Alphonso fruit pulp. Dense, chewy, and melt-in-the-mouth, our Mango Fruit Bar Burfi is loved across tea tables, festive gifting, and lunchboxes.',
-    image: 'https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=800&q=80',
-    additionalImages: [
-      'https://images.unsplash.com/photo-1546548970-71785318a17b?auto=format&fit=crop&w=800&q=80'
-    ],
+    longDescription: 'A modern dessert innovation by Kataria Foods: all the celebratory delight of traditional Indian burfi crafted entirely with pure Alphonso fruit pulp. Dense, chewy, and melt-in-the-mouth, our Mango Fruit Bar Burfi is loved across tea tables, festive gifting, and sweet connoisseurs.',
+    image: mangoBurfiImg,
+    fruitPulpPercentage: 70,
+    sensoryProfile: {
+      tanginess: 2,
+      sweetness: 5,
+      spiciness: 0
+    },
+    bestMoments: ['Festive celebrations', 'Chai time accompaniment', 'Gift hampers'],
     packOptions: [
       { weight: '250g Box', price: 135, originalPrice: 160, inStock: true, packageType: 'Gift Box' },
       { weight: '500g Royal Box', price: 260, originalPrice: 310, inStock: true, packageType: 'Gift Box' },
@@ -97,9 +129,9 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 412,
     isBestseller: true,
-    isJagdambSpecial: true,
+    isSpecialSignature: true,
     badge: 'Festive Bestseller',
-    ingredients: ['Alphonso Mango Pulp (70%)', 'Invert Sugar', 'Liquid Glucose', 'Pectin', 'Cardamom', 'Ghee Essence (Vegetarian)'],
+    ingredients: ['Alphonso Mango Pulp (70%)', 'Invert Sugar', 'Liquid Glucose', 'Pectin', 'Cardamom', 'Vegetarian Glaze'],
     nutrition: {
       energy: '345 kcal / 100g',
       carbohydrates: '82.2g',
@@ -108,7 +140,7 @@ export const PRODUCTS: Product[] = [
       protein: '1.5g',
       dietaryFiber: '2.8g'
     },
-    highlights: ['Ratnagiri Alphonso Mango Pulp', 'Gluten Free & Dairy Free', 'Premium Gifting Pack', 'Soft & Chewy Texture'],
+    highlights: ['70% Ratnagiri Alphonso Pulp', 'Gluten Free & Dairy Free', 'Premium Gifting Pack', 'Soft & Chewy Texture'],
     shelfLife: '9 Months from MFD',
     storageInstructions: 'Store in cool and dry ambience. Avoid heat exposure to keep fudge texture optimal.'
   },
@@ -116,12 +148,20 @@ export const PRODUCTS: Product[] = [
     id: 'imli-fruit-bar-burfi',
     name: 'Imli Fruit Bar Burfi',
     hindiName: 'इमली फ्रूट बार बर्फी',
-    tagline: 'Artisanal Tangy Tamarind Burfi Cubes with a Hint of Spiced Jaggery',
+    tagline: 'Artisanal Tangy Tamarind Burfi Cubes with Spiced Sugar Crust',
     category: 'burfi',
     flavor: 'Tangy Tamarind / Imli',
-    description: 'Firm, sliceable tamarind burfi squares coated in mild sweet crust. An irresistible marriage of sour tamarind and sweet confectionery craft.',
-    longDescription: 'Created exclusively by Jagdamb Foods and now proudly featured under the Kataria Foods banner. It elevates tamarind pulp into a sophisticated sweetmeat cube that satisfies sour cravings with authentic Indian candy heritage.',
-    image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80',
+    packageTypes: ['Gift Box', 'Carton Box'],
+    description: 'Firm, sliceable tamarind burfi squares coated in mild spice-sugar crystals. A sophisticated celebration of authentic Indian confectionery craft.',
+    longDescription: 'Created exclusively by Kataria Foods master confectioners, this treat elevates concentrated tamarind pulp into a sophisticated sweetmeat cube that satisfies sour cravings with authentic Indian candy heritage.',
+    image: imliBurfiImg,
+    fruitPulpPercentage: 60,
+    sensoryProfile: {
+      tanginess: 4,
+      sweetness: 4,
+      spiciness: 2
+    },
+    bestMoments: ['Digestive after dinner', 'Office desk snacking', 'Family gatherings'],
     packOptions: [
       { weight: '250g Box', price: 130, originalPrice: 155, inStock: true, packageType: 'Gift Box' },
       { weight: '500g Box', price: 250, originalPrice: 295, inStock: true, packageType: 'Gift Box' },
@@ -129,8 +169,7 @@ export const PRODUCTS: Product[] = [
     ],
     rating: 4.8,
     reviewCount: 195,
-    isJagdambSpecial: true,
-    badge: 'Jagdamb Creation',
+    badge: 'Artisanal Burfi',
     ingredients: ['Tamarind Pulp (60%)', 'Desi Khand / Sugar', 'Black Salt', 'Jeera Powder', 'Pectin', 'Natural Spices'],
     nutrition: {
       energy: '338 kcal / 100g',
@@ -144,15 +183,23 @@ export const PRODUCTS: Product[] = [
     storageInstructions: 'Keep sealed in container at room temperature.'
   },
   {
-    id: 'kaccha-mango-burfi',
+    id: 'kaccha-mango-fruit-bar-burfi',
     name: 'Kaccha Mango Fruit Bar Burfi',
     hindiName: 'कच्चा आम फ्रूट बर्फी',
     tagline: 'Green Raw Mango Confectionery Squares with Tangy Masala Dust',
     category: 'burfi',
     flavor: 'Cool Pudina & Kairi',
-    description: 'Refreshing tart raw mango burfi cubes dusted with mild chatpata masala. A vibrant culinary experience for your taste buds.',
+    packageTypes: ['Gift Box', 'Carton Box'],
+    description: 'Refreshing tart raw mango burfi cubes dusted with mild chatpata masala. A vibrant culinary experience for your palate.',
     longDescription: 'Crafted with genuine green mango pulp boiled to high density and set into easy-to-snack squares. Perfect for school tiffins, evening chai companions, and travel snacking.',
-    image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=80',
+    image: kacchaMangoBurfiImg,
+    fruitPulpPercentage: 60,
+    sensoryProfile: {
+      tanginess: 4,
+      sweetness: 3,
+      spiciness: 2
+    },
+    bestMoments: ['Evening teatime', 'Tangy craving', 'Kids snack'],
     packOptions: [
       { weight: '250g Box', price: 130, originalPrice: 155, inStock: true, packageType: 'Gift Box' },
       { weight: '500g Box', price: 250, originalPrice: 295, inStock: true, packageType: 'Gift Box' },
@@ -160,8 +207,7 @@ export const PRODUCTS: Product[] = [
     ],
     rating: 4.7,
     reviewCount: 167,
-    isJagdambSpecial: true,
-    ingredients: ['Raw Mango Pulp', 'Sugar', 'Mint Extract', 'Sendha Namak', 'Dry Mango Powder (Amchur)'],
+    ingredients: ['Raw Mango Pulp', 'Sugar', 'Mint Extract', 'Sendha Namak', 'Amchur'],
     nutrition: {
       energy: '325 kcal / 100g',
       carbohydrates: '77.3g',
@@ -175,27 +221,32 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'dobull-imli-candy',
-    name: 'Dobull Imli Candy',
+    name: 'Dobull Imli Candy (Pet Jar Edition)',
     hindiName: 'डोबल इमली कैंडी',
     tagline: 'Double-Burst Tamarind Drops with Chewy Spiced Center',
     category: 'candies',
     flavor: 'Tangy Tamarind / Imli',
-    description: 'The famous Jagdamb dual-sensation candy: a hard tangy outer shell bursting into an authentic gooey tamarind-cumin core.',
-    longDescription: 'Dobull Imli Candy is one of Jagdamb Foods\' most loved creations across Maharashtra, Karnataka, and Goa. Every candy drop delivers a two-stage flavor wave: first the crisp tangy zing, followed by a rich, soft tamarind spiced center that lingers pleasantly.',
-    image: 'https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?auto=format&fit=crop&w=800&q=80',
-    additionalImages: [
-      'https://images.unsplash.com/photo-1575224300306-1b8da36134ec?auto=format&fit=crop&w=800&q=80'
-    ],
+    packageTypes: ['Pouch', 'PET Jar'],
+    description: 'The famous Kataria dual-sensation candy: a hard tangy outer shell bursting into an authentic gooey tamarind-cumin core.',
+    longDescription: 'Dobull Imli Candy delivers a dual-stage flavor sensation: first the crisp tangy shell, followed by a gooey, rich tamarind-spice core that lingers on your palate. Individually wrapped in airtight protective wrappers.',
+    image: dobullImliCandyImg,
+    fruitPulpPercentage: 28,
+    sensoryProfile: {
+      tanginess: 5,
+      sweetness: 3,
+      spiciness: 2
+    },
+    bestMoments: ['Car rides & daily travel', 'Post-meal digestive', 'Retail sweet jar staple'],
     packOptions: [
-      { weight: '100g Pouch (approx 35 pcs)', price: 35, originalPrice: 40, inStock: true, packageType: 'Pouch' },
-      { weight: '250g PET Jar (approx 90 pcs)', price: 85, originalPrice: 100, inStock: true, packageType: 'PET Jar' },
-      { weight: '500g PET Jar (approx 180 pcs)', price: 160, originalPrice: 190, inStock: true, packageType: 'PET Jar' },
+      { weight: '100g Pouch (~35 pcs)', price: 35, originalPrice: 40, inStock: true, packageType: 'Pouch' },
+      { weight: '250g PET Jar (~90 pcs)', price: 85, originalPrice: 100, inStock: true, packageType: 'PET Jar' },
+      { weight: '500g PET Jar (~180 pcs)', price: 160, originalPrice: 190, inStock: true, packageType: 'PET Jar' },
       { weight: '1kg Family PET Jar', price: 295, originalPrice: 350, inStock: true, packageType: 'PET Jar' }
     ],
     rating: 4.9,
     reviewCount: 520,
     isBestseller: true,
-    isJagdambSpecial: true,
+    isSpecialSignature: true,
     badge: 'Mega Bestseller',
     ingredients: ['Sugar', 'Liquid Glucose', 'Concentrated Tamarind Pulp (28%)', 'Kala Namak', 'Jeera', 'Food Grade Acidity Regulators'],
     nutrition: {
@@ -216,9 +267,17 @@ export const PRODUCTS: Product[] = [
     tagline: 'High-Impact Sour Tamarind Blast for Extreme Tang Lovers',
     category: 'candies',
     flavor: 'Tangy Tamarind / Imli',
+    packageTypes: ['Pouch', 'PET Jar'],
     description: 'An explosive tamarind candy packed with spicy black salt and zesty citrus burst that instantly awakens the palate.',
     longDescription: 'Created for true tamarind lovers who crave that electrifying boom! Formulated using dark aged tamarind paste with an intense chatpata kick. A staple in cars, travel bags, and retail checkout counters.',
-    image: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=800&q=80',
+    image: jetImliBoomImg,
+    fruitPulpPercentage: 30,
+    sensoryProfile: {
+      tanginess: 5,
+      sweetness: 2,
+      spiciness: 4
+    },
+    bestMoments: ['Driving alertness', 'Sour candy lovers', 'Quick palate cleanser'],
     packOptions: [
       { weight: '100g Pouch', price: 35, originalPrice: 40, inStock: true, packageType: 'Pouch' },
       { weight: '250g PET Jar', price: 85, originalPrice: 100, inStock: true, packageType: 'PET Jar' },
@@ -227,7 +286,6 @@ export const PRODUCTS: Product[] = [
     ],
     rating: 4.8,
     reviewCount: 310,
-    isJagdambSpecial: true,
     badge: 'Intense Zing',
     ingredients: ['Sugar', 'Tamarind Pulp', 'Liquid Glucose', 'Rock Salt', 'Chili Flakes (mild)', 'Ajwain Infusion'],
     nutrition: {
@@ -248,9 +306,17 @@ export const PRODUCTS: Product[] = [
     tagline: 'Spicy Green Raw Mango Candy with Crunchy Tang Shell',
     category: 'candies',
     flavor: 'Cool Pudina & Kairi',
-    description: 'Raw mango flavor with a heart of chatpata masala. Crisp on the outside, tantalizing on the tongue.',
-    longDescription: 'A classic nostalgic recipe transformed into modern high-barrier packaging. Delivers the authentic taste of raw mango slices dipped in chili-salt from village fairs.',
-    image: 'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=800&q=80',
+    packageTypes: ['Pouch', 'PET Jar'],
+    description: 'Raw green mango flavor with a heart of chatpata masala. Crisp on the outside, tantalizing on the tongue.',
+    longDescription: 'A nostalgic recipe transformed into modern high-barrier packaging. Delivers the authentic taste of raw mango slices dipped in chili-salt from village fairs.',
+    image: dobullKairiBoomImg,
+    fruitPulpPercentage: 25,
+    sensoryProfile: {
+      tanginess: 4,
+      sweetness: 3,
+      spiciness: 3
+    },
+    bestMoments: ['Summer treat', 'School tiffin', 'Movie night'],
     packOptions: [
       { weight: '100g Pouch', price: 35, originalPrice: 40, inStock: true, packageType: 'Pouch' },
       { weight: '250g PET Jar', price: 85, originalPrice: 100, inStock: true, packageType: 'PET Jar' },
@@ -258,7 +324,6 @@ export const PRODUCTS: Product[] = [
     ],
     rating: 4.8,
     reviewCount: 228,
-    isJagdambSpecial: true,
     ingredients: ['Sugar', 'Liquid Glucose', 'Kairi Concentrated Extract', 'Mint', 'Black Salt', 'Citric Acid'],
     nutrition: {
       energy: '380 kcal / 100g',
@@ -278,18 +343,25 @@ export const PRODUCTS: Product[] = [
     tagline: 'Chewy Alphonso Mango Pulp Toffees in Resealable Jar',
     category: 'candies',
     flavor: 'Ripe Alphonso Mango',
+    packageTypes: ['PET Jar', 'Carton Box'],
     description: 'Individually twist-wrapped bite-sized toffees made from pure mango pulp. Soft, smooth, and non-sticky.',
     longDescription: 'All the rich goodness of sun-cured Aam Papad transformed into handy, non-sticky individual toffee portions. Perfect for carrying in pockets, gifting in hampers, or keeping on office desks.',
-    image: 'https://images.unsplash.com/photo-1582293041079-7814c2f12063?auto=format&fit=crop&w=800&q=80',
+    image: aamPapadToffeeImg,
+    fruitPulpPercentage: 55,
+    sensoryProfile: {
+      tanginess: 2,
+      sweetness: 5,
+      spiciness: 0
+    },
+    bestMoments: ['Office desk bowl', 'Wedding favors', 'Sweet tooth cravings'],
     packOptions: [
-      { weight: '250g PET Jar (approx 65 toffees)', price: 99, originalPrice: 120, inStock: true, packageType: 'PET Jar' },
-      { weight: '500g PET Jar (approx 130 toffees)', price: 185, originalPrice: 220, inStock: true, packageType: 'PET Jar' },
+      { weight: '250g PET Jar (~65 pcs)', price: 99, originalPrice: 120, inStock: true, packageType: 'PET Jar' },
+      { weight: '500g PET Jar (~130 pcs)', price: 185, originalPrice: 220, inStock: true, packageType: 'PET Jar' },
       { weight: '1kg Bulk Bag', price: 340, originalPrice: 410, inStock: true, packageType: 'Carton Box' }
     ],
     rating: 4.9,
     reviewCount: 440,
     isBestseller: true,
-    isJagdambSpecial: true,
     badge: 'Popular Snacker',
     ingredients: ['Pure Mango Pulp (55%)', 'Sugar', 'Liquid Glucose', 'Pectin', 'Cardamom Extract'],
     nutrition: {
@@ -310,9 +382,17 @@ export const PRODUCTS: Product[] = [
     tagline: 'Dehydrated Golden Mango Pulp Cubes for Effortless Snacking',
     category: 'fruit-bars',
     flavor: 'Ripe Alphonso Mango',
+    packageTypes: ['Pouch', 'Carton Box'],
     description: 'Precision cut dried mango cubes with a soft jelly-like bite. Rich in natural carotene and tropical aroma.',
     longDescription: 'A modern fruit snack format manufactured using gentle low-temperature drying that locks in natural mango aroma, vitamins, and luscious sweet taste without caramelizing.',
-    image: 'https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=80',
+    image: mangoFruitCubesImg,
+    fruitPulpPercentage: 75,
+    sensoryProfile: {
+      tanginess: 2,
+      sweetness: 5,
+      spiciness: 0
+    },
+    bestMoments: ['Hiking & sports', 'Morning cereal topping', 'Guilt-free snacking'],
     packOptions: [
       { weight: '150g Pouch', price: 75, originalPrice: 90, inStock: true, packageType: 'Pouch' },
       { weight: '300g Zipper Pack', price: 145, originalPrice: 175, inStock: true, packageType: 'Pouch' },
@@ -320,7 +400,6 @@ export const PRODUCTS: Product[] = [
     ],
     rating: 4.7,
     reviewCount: 145,
-    isJagdambSpecial: true,
     ingredients: ['Mango Pulp (75%)', 'Organic Sugar', 'Pectin', 'Citric Acid'],
     nutrition: {
       energy: '335 kcal / 100g',
@@ -340,12 +419,17 @@ export const PRODUCTS: Product[] = [
     tagline: 'Sun-Drenched 100% Ratnagiri Alphonso Mango Pulp Layers',
     category: 'aam-papad',
     flavor: 'Ripe Alphonso Mango',
+    packageTypes: ['Pouch', 'Gift Box', 'Carton Box'],
     description: 'The crowning jewel of Kataria Foods: delicate translucent golden layers of sun-dried Alphonso mango pulp with pure natural sweetness.',
     longDescription: 'Prepared using century-old sun-drying traditions in certified hygienic solar drying chambers. Each layer is gently dried to form thin, glossy, golden sheets of intense Alphonso mango richness.',
-    image: 'https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=800&q=80',
-    additionalImages: [
-      'https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=800&q=80'
-    ],
+    image: alphonsoAamPapadImg,
+    fruitPulpPercentage: 85,
+    sensoryProfile: {
+      tanginess: 2,
+      sweetness: 5,
+      spiciness: 0
+    },
+    bestMoments: ['Family dessert', 'Traditional festivals', 'Royal gifting'],
     packOptions: [
       { weight: '200g Pack', price: 115, originalPrice: 135, inStock: true, packageType: 'Pouch' },
       { weight: '400g Fresh Tray', price: 220, originalPrice: 260, inStock: true, packageType: 'Gift Box' },
@@ -354,7 +438,8 @@ export const PRODUCTS: Product[] = [
     rating: 5.0,
     reviewCount: 680,
     isBestseller: true,
-    badge: 'Kataria Heritage',
+    isSpecialSignature: true,
+    badge: 'Kataria Gold Heritage',
     ingredients: ['Ratnagiri Alphonso Mango Pulp (85%)', 'Sugar (15%)', 'Natural Saffron hint'],
     nutrition: {
       energy: '340 kcal / 100g',
@@ -374,9 +459,17 @@ export const PRODUCTS: Product[] = [
     tagline: 'Dark Spicy Kala Aam Papad Infused with Hing & Roasted Spices',
     category: 'aam-papad',
     flavor: 'Spicy Chatpata Masala',
+    packageTypes: ['Pouch', 'Carton Box'],
     description: 'Authentic dark roasted aam papad strips packed with black pepper, asafoetida, cumin, and dry ginger for royal digestive kick.',
     longDescription: 'Known throughout Rajasthan and Gujarat as the ultimate post-meal digestive snack. Slow cooked to deep caramel tones and cured with crushed hing and sea salt.',
-    image: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=800&q=80',
+    image: khatelaMasalaAamPapadImg,
+    fruitPulpPercentage: 72,
+    sensoryProfile: {
+      tanginess: 4,
+      sweetness: 3,
+      spiciness: 4
+    },
+    bestMoments: ['Post-heavy meal digestive', 'Street-food cravings', 'Winter evening munching'],
     packOptions: [
       { weight: '200g Pouch', price: 120, originalPrice: 140, inStock: true, packageType: 'Pouch' },
       { weight: '400g Tray', price: 230, originalPrice: 270, inStock: true, packageType: 'Pouch' },
@@ -405,9 +498,17 @@ export const PRODUCTS: Product[] = [
     tagline: 'Mint-Infused Raw Kairi Dried Strips with Rock Salt Crust',
     category: 'aam-papad',
     flavor: 'Cool Pudina & Kairi',
+    packageTypes: ['Pouch', 'Carton Box'],
     description: 'Vibrant green sun-dried mango sheets with fresh mint cooling essence and zesty rock salt.',
     longDescription: 'A refreshing twist on classic papad combining mountain mint extract with tart green mango sheets. Savor the cold mint sensation paired with tart sourness.',
-    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80',
+    image: pudinaGreenAamPapadImg,
+    fruitPulpPercentage: 70,
+    sensoryProfile: {
+      tanginess: 4,
+      sweetness: 3,
+      spiciness: 2
+    },
+    bestMoments: ['Hot summer afternoons', 'After-sports refresher', 'Party snack'],
     packOptions: [
       { weight: '200g Pouch', price: 115, originalPrice: 135, inStock: true, packageType: 'Pouch' },
       { weight: '400g Pack', price: 220, originalPrice: 260, inStock: true, packageType: 'Pouch' },
@@ -434,9 +535,17 @@ export const PRODUCTS: Product[] = [
     tagline: 'Diamond Cut Luxury Mango Slices Crafted with Pure Fruit Pulp',
     category: 'katli',
     flavor: 'Ripe Alphonso Mango',
-    description: 'Kataria\'s celebrated diamond cut confectionery: delicate fruit katli with a smooth melt, natural mango fibers, and silver sheen.',
+    packageTypes: ['Gift Box', 'Carton Box'],
+    description: 'Kataria celebrated diamond cut confectionery: delicate fruit katli with a smooth melt, natural mango fibers, and silver sheen.',
     longDescription: 'An exquisite celebratory sweet created as a guilt-free fruit alternative to traditional mawa katlis. Made exclusively from thick Alphonso pulp reduced to glossy perfection and sliced into elegant diamond facets.',
-    image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80',
+    image: alphonsoKatliImg,
+    fruitPulpPercentage: 78,
+    sensoryProfile: {
+      tanginess: 2,
+      sweetness: 5,
+      spiciness: 0
+    },
+    bestMoments: ['Weddings & anniversaries', 'Diwali & Raksha Bandhan', 'VIP corporate gifting'],
     packOptions: [
       { weight: '250g Gift Box', price: 155, originalPrice: 185, inStock: true, packageType: 'Gift Box' },
       { weight: '500g Luxury Box', price: 295, originalPrice: 350, inStock: true, packageType: 'Gift Box' },
@@ -465,9 +574,17 @@ export const PRODUCTS: Product[] = [
     tagline: 'Immunity Boosting Indian Gooseberry Slices with Almond & Pistachio',
     category: 'katli',
     flavor: 'Natural Jamun & Amla',
+    packageTypes: ['Gift Box'],
     description: 'Nutrient-rich candied wild Amla pulp enriched with crushed almonds, pistachios, and green cardamom for vitality.',
     longDescription: 'Combining ancient Ayurvedic wisdom with gourmet confectionery. Each square provides a rich source of natural Vitamin C and bioflavonoids balanced with crunchy dry fruits.',
-    image: 'https://images.unsplash.com/photo-1546548970-71785318a17b?auto=format&fit=crop&w=800&q=80',
+    image: amlaKatliImg,
+    fruitPulpPercentage: 68,
+    sensoryProfile: {
+      tanginess: 3,
+      sweetness: 4,
+      spiciness: 1
+    },
+    bestMoments: ['Morning vitality bite', 'Elderly health sweet', 'Ayurvedic wellness'],
     packOptions: [
       { weight: '250g Box', price: 165, originalPrice: 195, inStock: true, packageType: 'Gift Box' },
       { weight: '500g Box', price: 310, originalPrice: 370, inStock: true, packageType: 'Gift Box' }
@@ -495,9 +612,17 @@ export const PRODUCTS: Product[] = [
     tagline: '100% Wild Black Plum Dried Strips, Diabetic Friendly with Zero Added Sugar',
     category: 'fruit-bars',
     flavor: 'Natural Jamun & Amla',
+    packageTypes: ['Pouch', 'Carton Box'],
     description: 'Pure dehydrated wild Jamun (black plum) strips spiced with black salt and cumin. Specially curated for wellness and sugar management.',
     longDescription: 'Made from high-altitude wild Jamun pulp without any added refined cane sugar. Famous for supporting healthy glycemic balance while serving as a delightful tangy digestive after meals.',
-    image: 'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=800&q=80',
+    image: jamunChipsImg,
+    fruitPulpPercentage: 92,
+    sensoryProfile: {
+      tanginess: 4,
+      sweetness: 2,
+      spiciness: 2
+    },
+    bestMoments: ['Diabetic-safe indulgence', 'Post-lunch digestive', 'Daily antioxidant boost'],
     packOptions: [
       { weight: '150g Pouch', price: 145, originalPrice: 175, inStock: true, packageType: 'Pouch' },
       { weight: '300g Pouch', price: 275, originalPrice: 330, inStock: true, packageType: 'Pouch' },
@@ -518,31 +643,63 @@ export const PRODUCTS: Product[] = [
     highlights: ['Diabetic Friendly', '0% Added Cane Sugar', 'Rich in Anthocyanin Antioxidants', 'Aids Digestion'],
     shelfLife: '12 Months from MFD',
     storageInstructions: 'Store in dry place.'
+  },
+  {
+    id: 'kataria-royal-gift-box',
+    name: 'Kataria Royal Confectionery Gift Box',
+    hindiName: 'कटारिया रॉयल कन्फेक्शनरी गिफ्ट बॉक्स',
+    tagline: 'Festive Luxury Wooden Hamper with Assorted Aam Papad & Fruit Bars',
+    category: 'festive-gift-boxes',
+    flavor: 'Assorted Fruit Delights',
+    packageTypes: ['Gift Box'],
+    description: 'A magnificent festive assortment presenting Kataria signature fruit bars, Alphonso aam papad rolls, and twist-wrapped fruit confections.',
+    longDescription: 'Curated for grand celebrations, corporate gifting, and weddings. Encased in an ornate royal blue and gold keepsake box, containing individual sealed compartments of Alphonso Mango Katli, Tamarind Imli Bars, Green Kairi Papads, and festive toffees.',
+    image: katariaGiftBoxImg,
+    fruitPulpPercentage: 80,
+    sensoryProfile: {
+      tanginess: 3,
+      sweetness: 4,
+      spiciness: 2
+    },
+    bestMoments: ['Diwali gifting', 'Corporate executive presents', 'Family reunion feasts'],
+    packOptions: [
+      { weight: '500g Assorted Hamper', price: 395, originalPrice: 470, inStock: true, packageType: 'Gift Box' },
+      { weight: '1kg Grand Royal Hamper', price: 750, originalPrice: 890, inStock: true, packageType: 'Gift Box' }
+    ],
+    rating: 5.0,
+    reviewCount: 312,
+    isBestseller: true,
+    badge: 'Luxury Gift Hamper',
+    ingredients: ['Alphonso Mango Pulp', 'Tamarind Extract', 'Raw Green Mango Pulp', 'Dry Fruits', 'Natural Spices'],
+    nutrition: {
+      energy: '338 kcal / 100g',
+      carbohydrates: '80.0g',
+      naturalSugars: '63.0g',
+      fat: '1.2g',
+      protein: '2.0g'
+    },
+    highlights: ['Premium Keepsake Gift Box', 'All 6 Signature Flavors', 'Hermetically Sealed Compartments', 'Perfect Festive Present'],
+    shelfLife: '9 Months from MFD',
+    storageInstructions: 'Store in a cool and dry place.'
   }
 ];
 
 export const CATEGORIES = [
-  { id: 'all', name: 'All Products', count: 14, icon: 'Sparkles' },
-  { id: 'fruit-bars', name: 'Fruit Bars & Slabs', count: 4, icon: 'Layers' },
+  { id: 'all', name: 'All Confectionery', count: 17, icon: 'Sparkles' },
+  { id: 'fruit-bars', name: 'Fruit Bars & Slabs', count: 5, icon: 'Layers' },
   { id: 'burfi', name: 'Fruit Burfi', count: 3, icon: 'Square' },
   { id: 'candies', name: 'Imli Candies & Toffees', count: 4, icon: 'Candy' },
   { id: 'aam-papad', name: 'Traditional Aam Papad', count: 3, icon: 'Sun' },
-  { id: 'katli', name: 'Royal Fruit Katli', count: 2, icon: 'Gem' }
+  { id: 'katli', name: 'Royal Katli & Slices', count: 2, icon: 'Gem' },
+  { id: 'festive-gift-boxes', name: 'Festive Gift Hampers', count: 1, icon: 'Gift' }
 ] as const;
-
-export const CERTIFICATIONS = [
-  { title: 'FSSAI Certified', detail: 'Lic No. 11520038000124', icon: 'ShieldCheck' },
-  { title: '100% Real Fruit Pulp', detail: 'Zero gelatins, 100% vegetarian', icon: 'Leaf' },
-  { title: 'ISO 22000 Facility', detail: 'Hygienic solar drying & packaging', icon: 'Award' },
-  { title: 'Direct Factory Prices', detail: 'Dispatched direct from Kolhapur & Alwar', icon: 'Truck' }
-];
 
 export const TESTIMONIALS = [
   {
     id: 1,
     name: 'Rajesh Sharma',
     role: 'Retail Distributor, Pune',
-    text: 'We have been ordering Jagdamb Imli Candy and Kataria Aam Papad for our 45 retail stores. The packaging is premium, moisture-proof, and the taste is identical to nostalgic village street treats. Customers keep returning for Dobull Imli!',
+    text: 'We have been ordering Kataria Imli Candy and Aam Papad for our 45 retail stores. The packaging is premium, moisture-proof, and the taste is identical to nostalgic village street treats. Customers keep returning for Dobull Imli!',
     rating: 5,
     location: 'Pune, Maharashtra'
   },

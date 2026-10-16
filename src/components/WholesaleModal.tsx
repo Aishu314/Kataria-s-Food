@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Briefcase, Phone, CheckCircle2, Send, Download } from 'lucide-react';
+import { X, Briefcase, Phone, CheckCircle2, Send } from 'lucide-react';
 import { Product } from '../types';
 
 interface WholesaleModalProps {
@@ -34,7 +34,7 @@ Contact: ${contactName || 'Sir/Madam'}
 Phone: ${phone}
 City: ${city}
 Requirement: ${notes || 'Dealer rate list and sample box'}
-Please send price catalog and dealer terms.`;
+Please send Kataria price catalog and dealer terms.`;
     window.open(`https://wa.me/919822054321?text=${encodeURIComponent(text)}`, '_blank');
   };
 
@@ -75,7 +75,7 @@ Please send price catalog and dealer terms.`;
               Request Sent!
             </h4>
             <p className="text-xs text-stone-600">
-              We have forwarded your details to our B2B sales team. You will receive the Kataria & Jagdamb wholesale catalog PDF via WhatsApp within 30 minutes.
+              We have forwarded your details to our Kataria Foods B2B sales team. You will receive the wholesale catalog PDF via WhatsApp within 30 minutes.
             </p>
             <button
               onClick={onClose}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Star, CheckCircle, MapPin, ThumbsUp } from 'lucide-react';
+import { Star, CheckCircle, MapPin } from 'lucide-react';
 import { TESTIMONIALS } from '../data/products';
 
 export const CustomerReviews: React.FC = () => {
@@ -22,7 +22,7 @@ export const CustomerReviews: React.FC = () => {
               Loved by Snackers & Sweet Marts Across India
             </h2>
             <p className="text-xs sm:text-sm text-stone-500 mt-1">
-              Based on 2,400+ verified retail and wholesale customer orders.
+              Based on 2,400+ verified retail and wholesale customer orders from Kataria Foods.
             </p>
           </div>
 

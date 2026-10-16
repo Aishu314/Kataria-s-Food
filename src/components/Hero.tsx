@@ -5,11 +5,14 @@ import {
   ShieldCheck, 
   CheckCircle2, 
   Star, 
-  Phone,
-  Flame,
-  Award
+  Phone, 
+  Flame, 
+  Award,
+  Leaf
 } from 'lucide-react';
 import { Product } from '../types';
+import imliHeroImg from '../assets/images/imli_fruit_bar_1792175041148.jpg';
+import candyHeroImg from '../assets/images/dobull_imli_candy_1792175041245.jpg';
 
 interface HeroProps {
   onExploreClick: () => void;
@@ -24,8 +27,6 @@ export const Hero: React.FC<HeroProps> = ({
   onSelectProduct,
   featuredProducts
 }) => {
-  const topProduct = featuredProducts[0] || null;
-
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-amber-50/70 via-orange-50/30 to-white pt-6 pb-16 md:pt-12 md:pb-24 border-b border-amber-100/60">
       {/* Background Decorative Blobs */}
@@ -38,12 +39,12 @@ export const Hero: React.FC<HeroProps> = ({
           {/* Left Text Column */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
             
-            {/* Integrated Jagdamb Badge */}
+            {/* Brand Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-100/90 text-amber-900 border border-amber-300 text-xs font-semibold shadow-xs">
               <span className="w-2 h-2 rounded-full bg-amber-600 animate-ping" />
               <span className="flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-amber-700" />
-                <span>Featuring the Complete <strong>Jagdamb Foods</strong> Specialities Catalog</span>
+                <span>Kataria Foods • 100% Real Fruit Pulp Confectionery</span>
               </span>
             </div>
 
@@ -54,19 +55,19 @@ export const Hero: React.FC<HeroProps> = ({
 
             {/* Descriptive Body */}
             <p className="text-base sm:text-lg text-stone-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
-              Direct from the artisanal kitchens of <strong>Kataria Foods</strong> and <strong>Jagdamb Foods</strong>. Made with 100% genuine fruit pulp, sun-cured traditional recipes, and authentic Indian spices—zero synthetic gelatin or harsh artificial colors.
+              Direct from the artisanal solar-curing kitchens of <strong>Kataria Foods</strong>. Handcrafted with genuine Ratnagiri Alphonso mangoes, fresh Konkan tamarind, Himalayan rock salt, and digestive cumin—zero synthetic gelatin or artificial colors.
             </p>
 
             {/* Feature Pills */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-1 text-xs font-semibold text-stone-700">
               <span className="flex items-center gap-1.5 bg-white/80 backdrop-blur px-3 py-1.5 rounded-lg border border-amber-200 shadow-xs">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" /> 100% Real Tamarind & Mango Pulp
+                <CheckCircle2 className="w-4 h-4 text-emerald-600" /> 100% Real Tamarind & Mango Extract
               </span>
               <span className="flex items-center gap-1.5 bg-white/80 backdrop-blur px-3 py-1.5 rounded-lg border border-amber-200 shadow-xs">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" /> FSSAI Certified Hygienic Facility
+                <ShieldCheck className="w-4 h-4 text-emerald-600" /> FSSAI Certified Hygienic Facility
               </span>
               <span className="flex items-center gap-1.5 bg-white/80 backdrop-blur px-3 py-1.5 rounded-lg border border-amber-200 shadow-xs">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" /> Pure Vegetarian (Green Dot)
+                <Leaf className="w-4 h-4 text-emerald-600" /> Pure Vegetarian (Green Dot)
               </span>
             </div>
 
@@ -105,7 +106,7 @@ export const Hero: React.FC<HeroProps> = ({
                 <div className="text-[11px] text-stone-500 font-medium">Delighted Snackers</div>
               </div>
               <div>
-                <div className="font-display font-extrabold text-2xl text-amber-700">14+</div>
+                <div className="font-display font-extrabold text-2xl text-amber-700">17+</div>
                 <div className="text-[11px] text-stone-500 font-medium">Artisanal Flavors</div>
               </div>
               <div>
@@ -127,32 +128,32 @@ export const Hero: React.FC<HeroProps> = ({
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white group">
                 <div className="relative h-96 w-full overflow-hidden bg-amber-100">
                   <img
-                    src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=80"
-                    alt="Authentic Indian Fruit Confectionery - Imli Fruit Bar & Aam Papad"
+                    src={imliHeroImg}
+                    alt="Authentic Indian Imli Fruit Bar - Pure Tamarind Pulp Slab"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-950/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/20 to-transparent" />
                   
                   {/* Floating Tags */}
                   <div className="absolute top-4 left-4 flex flex-col gap-2">
-                    <span className="px-3 py-1 rounded-full bg-amber-600/90 backdrop-blur-md text-white text-xs font-bold tracking-wide flex items-center gap-1.5 shadow-md">
-                      <Flame className="w-3.5 h-3.5 text-amber-200" /> #1 Jagdamb Imli Bar
+                    <span className="px-3 py-1 rounded-full bg-amber-600/95 backdrop-blur-md text-white text-xs font-bold tracking-wide flex items-center gap-1.5 shadow-md">
+                      <Flame className="w-3.5 h-3.5 text-amber-200" /> #1 Bestseller Imli Bar
                     </span>
-                    <span className="px-3 py-1 rounded-full bg-emerald-700/90 backdrop-blur-md text-white text-[11px] font-semibold tracking-wide flex items-center gap-1 shadow-md">
-                      <ShieldCheck className="w-3.5 h-3.5 text-emerald-200" /> 100% Real Fruit Pulp
+                    <span className="px-3 py-1 rounded-full bg-emerald-700/95 backdrop-blur-md text-white text-[11px] font-semibold tracking-wide flex items-center gap-1 shadow-md">
+                      <ShieldCheck className="w-3.5 h-3.5 text-emerald-200" /> 65% Real Tamarind Pulp
                     </span>
                   </div>
 
                   {/* Bottom Highlight */}
                   <div className="absolute bottom-4 left-4 right-4 text-white">
                     <span className="text-[11px] font-semibold uppercase tracking-wider text-amber-300">
-                      Bestselling Duo Pack
+                      Kataria Signature Batch
                     </span>
                     <h3 className="font-display font-bold text-xl text-white">
                       Imli Fruit Bar & Alphonso Aam Papad
                     </h3>
                     <p className="text-xs text-stone-300 line-clamp-1 mt-0.5">
-                      Slow-cooked authentic tamarind pulp with cumin & sun-ripened Ratnagiri mango slabs.
+                      Slow-cooked authentic tamarind pulp with roasted jeera & sun-ripened Ratnagiri mango slabs.
                     </p>
                     <div className="mt-3 flex items-center justify-between">
                       <span className="text-lg font-extrabold text-amber-400">
@@ -162,21 +163,23 @@ export const Hero: React.FC<HeroProps> = ({
                         onClick={onExploreClick}
                         className="px-3.5 py-1.5 rounded-xl bg-white text-stone-900 text-xs font-bold hover:bg-amber-100 transition-colors cursor-pointer"
                       >
-                        View Items
+                        Explore Flavors
                       </button>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Floating Badge 1 - Dobull Imli Candy */}
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-3.5 shadow-xl border border-amber-200 flex items-center gap-3 animate-bounce [animation-duration:4s]">
-                <div className="w-11 h-11 rounded-xl bg-amber-100 flex items-center justify-center text-amber-800 font-bold text-lg shadow-inner">
-                  🍬
-                </div>
+              {/* Floating Badge 1 - Dobull Imli Candy Jar */}
+              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-3 shadow-xl border border-amber-200 flex items-center gap-3 animate-bounce [animation-duration:4s]">
+                <img 
+                  src={candyHeroImg} 
+                  alt="Dobull Imli Candy Jar" 
+                  className="w-12 h-12 object-cover rounded-xl border border-amber-200 shadow-xs" 
+                />
                 <div>
                   <div className="text-[11px] uppercase tracking-wider font-extrabold text-amber-600">
-                    Jagdamb Icon
+                    Kataria Bestseller
                   </div>
                   <div className="text-xs font-bold text-stone-900">Dobull Imli Candy</div>
                   <div className="text-[10px] text-stone-500">250g & 500g PET Jars</div>
